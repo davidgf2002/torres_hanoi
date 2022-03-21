@@ -55,7 +55,7 @@ class Pila
                 push(nuevo);
             }
         }
-        / -------------------- */
+        /* -------------------- */
 
         public void push(Disco d)
         {
@@ -82,5 +82,6 @@ class Pila
             }
            return false;
         }
+    }
 
 }

@@ -9,7 +9,9 @@ namespace Torres_de_Hanoi
     class Hanoi
     {
 
+        private static int num_discos;
         private static int num_movimientos;
+
         private static Pila INI, FIN, AUX;
 
 
@@ -51,9 +53,44 @@ namespace Torres_de_Hanoi
             }
         }
 
-        public int iterativo(int n, Pila ini, Pila fin, Pila aux)
+        public static int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
-            return 0;
+            INI = ini;
+            FIN = fin;
+            AUX = aux;
+
+            num_movimientos = 0;
+            num_discos = n;
+            if(n % 2 != 0)
+            {
+                while(solucion() == false)
+                {
+                    mover_disco(ini, fin);
+                    mover_disco(ini,aux);
+                    mover_disco(aux, fin);
+                }
+            }
+            else
+            {
+                while(solucion() == false)
+                {
+                    mover_disco(ini, aux);
+                    mover_disco(ini, fin);
+                    mover_disco(aux, fin);
+                }
+            }
+            return num_movimientos;
+        }
+
+
+
+        private static bool solucion()
+        {
+            if(FIN.Size == num_discos)
+            {
+                return true;
+            }
+            return false;
         }
 
     }
